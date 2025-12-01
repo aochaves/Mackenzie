@@ -1,4 +1,4 @@
-Explicação das Decisões Arquiteturais
+**Explicação das Decisões Arquiteturais**
 Abaixo detalho as decisões técnicas encontradas no código e suas justificativas:
 1. Camada Raw (Bronze) em Parquet
 Decisão: Os dados originais em CSV (que possuem metadados nas primeiras linhas e encoding latin1) foram lidos, convertidos para um DataFrame Spark e salvos no formato Parquet com compressão Snappy.
