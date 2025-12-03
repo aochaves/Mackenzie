@@ -1,7 +1,7 @@
 # Integrantes
-10743782 - Alberto Oliveira chaves
-10391418 - Bianca Rodrigues Paulino
-10347669 - Natanael Oliveira Santos
+10743782 - Alberto Oliveira chaves<br>
+10391418 - Bianca Rodrigues Paulino<br>
+10347669 - Natanael Oliveira Santos<br>
 
 # Explicação das Decisões Arquiteturais
 
