@@ -18,8 +18,8 @@ Snappy: Oferece um excelente equilíbrio entre taxa de compressão e velocidade 
 
 Preservação de Metadados: O código trata a extração de metadados do cabeçalho (UF, Estação, Latitude), transformando-os em uma coluna JSON, preservando a informação original sem quebrar a estrutura tabular.
 
-## 2. Processamento Distribuído com Spark (PySpark)
-Decisão: Utilização do Apache Spark para realizar tipagem de dados (casting), tratamento de nulos e criação de novas colunas (como DataHora).
+## 2. Processamento Distribuído com Spark (PySpark) 
+Decisão: Utilização do Apache Spark para realizar tipagem de dados (casting), tratamento de nulos, criação de novas colunas (como DataHora) e colunas a partir da quebra do metadados (UF e Estação).
 
 ### Justificativa:
 
