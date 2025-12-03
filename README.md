@@ -1,6 +1,6 @@
 # Explicação das Decisões Arquiteturais
 
-Abaixo estão detalhadas as decisões técnicas encontradas no código e suas respectivas justificativas, ideais para o README.md de um repositório.
+Abaixo estão detalhadas as decisões técnicas encontradas no código e suas respectivas justificativas.
 
 ## 1. Camada Raw (Bronze) em Parquet com Snappy
 Decisão: Os dados originais em CSV (com metadados nas primeiras linhas e encoding latin1) foram lidos, convertidos para um DataFrame Spark e salvos no formato Parquet com compressão Snappy.
