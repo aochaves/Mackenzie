@@ -7,8 +7,8 @@ RA: 10347669 - Natanael Oliveira Santos<br><br>
 
 Abaixo estão detalhadas as decisões técnicas do código e suas justificativas.
 
-## 1. Camada Raw (Bronze) em Parquet com Snappy
-Decisão: Os dados originais em CSV (com metadados nas primeiras linhas e encoding latin1) foram lidos, convertidos para um DataFrame Spark e salvos no formato Parquet com compressão Snappy.
+## 1. Camada Raw (Bronze) em Parquet com compressão Snappy
+Decisão: Os dados originais em CSV (com metadados nas primeiras linhas e encoding latin1) foram lidos, organizados, convertidos para um DataFrame Spark e salvos no formato Parquet com compressão Snappy.
 
 ### Justificativa:
 
