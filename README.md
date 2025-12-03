@@ -1,6 +1,11 @@
+# Integrantes
+10743782 - Alberto Oliveira chaves
+10391418 - Bianca Rodrigues Paulino
+10347669 - Natanael Oliveira Santos
+
 # Explicação das Decisões Arquiteturais
 
-Abaixo estão detalhadas as decisões técnicas encontradas no código e suas respectivas justificativas.
+Abaixo estão detalhadas as decisões técnicas do código e suas justificativas.
 
 ## 1. Camada Raw (Bronze) em Parquet com Snappy
 Decisão: Os dados originais em CSV (com metadados nas primeiras linhas e encoding latin1) foram lidos, convertidos para um DataFrame Spark e salvos no formato Parquet com compressão Snappy.
@@ -20,7 +25,7 @@ Decisão: Utilização do Apache Spark para realizar tipagem de dados (casting),
 
 Escalabilidade: O Spark permite processamento distribuído e escalável, crucial para lidar com volumes crescentes de dados.
 
-Data Cleaning: Foi essencial para corrigir problemas comuns de arquivos brasileiros (e.g., trocar vírgula por ponto em decimais) e unificar colunas de data e hora em um timestamp único (DataHora), facilitando análises temporais futuras.
+Data Cleaning: Foi essencial para corrigir problemas comuns de arquivos com formatação brasileira (trocar vírgula por ponto em decimais) e unificar colunas de data e hora em um timestamp único (DataHora), facilitando análises temporais futuras.
 
 ## 3. Camada Curated (Silver) com Delta Lake
 Decisão: A tabela final aula.default.clima foi salva no formato Delta Lake.
@@ -38,13 +43,13 @@ Decisão: A escrita da tabela final utilizou .partitionBy("UF").
 
 Performance de Consulta: O particionamento melhora drasticamente a performance de consultas que filtram por estado (ex: WHERE UF = 'DF').
 
-Otimização de Leitura: Ao separar fisicamente os arquivos em pastas por UF, o motor de busca lê apenas os dados necessários (partition pruning), ignorando o restante e reduzindo a latência da consulta.
+Otimização de Leitura: Ao separar fisicamente os arquivos em pastas por UF, o motor de busca lê apenas os dados necessário, ignorando o restante e reduzindo a latência da consulta.
 
 ## 5. Uso de Time Travel (Viagem no Tempo)
 Decisão: O código executa um DESCRIBE HISTORY e posteriormente um RESTORE TABLE.
 
 ### Justificativa:
 
-Versionamento Nativo: Esta é uma funcionalidade exclusiva do Delta Lake que permite o versionamento dos dados.
+Versionamento Nativo: Esta é uma funcionalidade do Delta Lake que permite o versionamento dos dados.
 
 Recuperação de Desastres: No exemplo, após deletar os dados do Distrito Federal ('DF'), a arquitetura permitiu "voltar no tempo" e restaurar a tabela para uma versão anterior (versão 1), recuperando os dados excluídos sem a necessidade de backups externos complexos.
