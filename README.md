@@ -1,4 +1,4 @@
-## Contribuiores
+## Contribuidores
 RA: 10743782 - Alberto Oliveira chaves<br>
 RA: 10391418 - Bianca Rodrigues Paulino<br>
 RA: 10347669 - Natanael Oliveira Santos<br><br>
